@@ -7,24 +7,16 @@ using System.Threading.Tasks;
 
 namespace PROJETO1.Services
 {
-    public class SellerService
+    public class DepartmentService
     {
         private readonly PROJETO1Context _context;
-        public SellerService(PROJETO1Context context)
+        public DepartmentService(PROJETO1Context context)
         {
             _context = context;
         }
-        public List<Seller> FindAll()
+        public List<Department> FindAll()
         {
-            return _context.Seller.ToList();
+            return _context.Department.OrderBy(x => x.Name).ToList();
         }
-
-        public void Insert(Seller obj)
-        {
-           
-            _context.Add(obj);
-            _context.SaveChanges();
-        }
-
     }
 }
